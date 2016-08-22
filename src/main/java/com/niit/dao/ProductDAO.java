@@ -15,5 +15,5 @@ public interface ProductDAO {
 
 	public void delete(String id);
 
-
+	public List<Product> getcatitem(String id);
 }

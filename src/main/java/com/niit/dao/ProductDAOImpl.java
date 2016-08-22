@@ -62,5 +62,19 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
+	@Transactional
+	public List<Product> getcatitem(String id) {
+		String hql = "from"+" Product"+" where categoryid=" + "'"+id+"'";
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Product> listProduct = (List<Product>) query.list();
+		if (listProduct != null && !listProduct.isEmpty()) {
+			return listProduct;
+		}
+		return null;
+	}
+
 
 }

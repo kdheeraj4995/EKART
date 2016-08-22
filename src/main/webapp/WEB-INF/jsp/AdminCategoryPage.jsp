@@ -38,13 +38,11 @@
 							</c:choose>
 						<tr>
 							<td><form:label path="name">
-									<spring:message text="Name" />
 								</form:label></td>
 							<td><form:input path="name" required="true" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="description">
-									<spring:message text="Description" />
 								</form:label></td>
 							<td><form:input path="description" required="true" /></td>
 						</tr>
@@ -57,7 +55,7 @@
 							<c:if test="${empty category.name}">
 									<input type="submit" class="w3-btn w3-blue"
 										value="<spring:message text="Add category"/>" />
-								</c:if></td>
+							</c:if></td>
 						</tr>
 					</table>
 				</form:form>
@@ -99,5 +97,7 @@
 				<div class="w3-container w3-quarter"></div>
 			</div>
 		</div>
+		
+		
 </body>
 </html>

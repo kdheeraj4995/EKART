@@ -1,5 +1,7 @@
 package com.niit.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.google.gson.Gson;
 import com.niit.dao.SupplierDAO;
 import com.niit.models.Supplier;
 
@@ -21,6 +23,16 @@ public class AdminSupplierController {
 	private SupplierDAO supplierDAO;
 	
 
+	@RequestMapping(value="/suppliergson")
+	@ResponseBody
+	public String SupplierGson()
+	{
+		List<Supplier> list=supplierDAO.list();
+		Gson gson=new Gson();
+		String data=gson.toJson(list);
+		return data;
+	}
+	
 	@RequestMapping(value = {"supplier"})
 	public String SupplierPage(Model model) {
 		model.addAttribute("supplier", new Supplier());
@@ -31,10 +43,10 @@ public class AdminSupplierController {
 
 	@RequestMapping(value = {"addsupplier", "editsupplier/addsupplier" }, method = RequestMethod.POST)
 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier , HttpServletRequest request) {
-		String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\supplier\\";
+		/*String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\supplier\\";*/
 		supplierDAO.saveOrUpdate(supplier);
-		MultipartFile file=supplier.getImage();
-		MultiPartController.upload(path, file, supplier.getId()+".jpg");
+		/*MultipartFile file=supplier.getImage();
+		MultiPartController.upload(path, file, supplier.getId()+".jpg");*/
 		return "redirect:/supplier";
 		
 	}
@@ -44,6 +56,7 @@ public class AdminSupplierController {
 		System.out.println("editSupplier");
 		model.addAttribute("supplier", this.supplierDAO.get(id));
 		model.addAttribute("supplierList", supplierDAO.list());
+		model.addAttribute("EditSupplier", "true");
 		model.addAttribute("SupplierPageClicked", "true");
 		return "Welcome";
 	}
@@ -51,7 +64,7 @@ public class AdminSupplierController {
 	@RequestMapping(value = { "removesupplier/{id}", "editsupplier/removesupplier/{id}" })
 	public String removeSupplier(@PathVariable("id") String id, Model model, HttpServletRequest request) throws Exception {
 		String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\supplier\\";
-		MultiPartController.deleteimage(path, id+".jpg");
+	/*	MultiPartController.deleteimage(path, id+".jpg");*/
 		supplierDAO.delete(id);
 		model.addAttribute("message", "Successfully Deleted");
 		return "redirect:/supplier";

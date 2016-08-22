@@ -43,9 +43,12 @@ li {
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<div class="w3-top">
@@ -113,12 +116,14 @@ li {
 			</c:choose>
 		</nav>
 	</div>
+
+
+
 	<c:choose>
 		<c:when test="${IfViewCartClicked}">
 			<c:import url="/WEB-INF/jsp/cart.jsp">
 			</c:import>
 		</c:when>
-
 		<c:when test="${IfPaymentClicked}">
 			<c:import url="/WEB-INF/jsp/Payment.jsp">
 			</c:import>
@@ -135,21 +140,25 @@ li {
 			<c:import url="/WEB-INF/jsp/registers.jsp">
 			</c:import>
 		</c:when>
+		<%-- <c:when test="${ViewCategoryClicked}">
+			<c:import url="/WEB-INF/jsp/viewitem.jsp">
+			</c:import>
+		</c:when> --%>
 	</c:choose>
 
 	<c:choose>
 		<c:when test="${ProductPageClicked}">
-			<c:import url="/WEB-INF/jsp/AdminProductPage.jsp"></c:import>
+			<c:import url="/WEB-INF/jsp/AdminProduct.jsp"></c:import>
 		</c:when>
 	</c:choose>
 	<c:choose>
 		<c:when test="${CategoryPageClicked}">
-			<c:import url="/WEB-INF/jsp/AdminCategoryPage.jsp"></c:import>
+			<c:import url="/WEB-INF/jsp/AdminCategory.jsp"></c:import>
 		</c:when>
 	</c:choose>
 	<c:choose>
 		<c:when test="${SupplierPageClicked}">
-			<c:import url="/WEB-INF/jsp/AdminSupplierPage.jsp"></c:import>
+			<c:import url="/WEB-INF/jsp/AdminSupplier.jsp"></c:import>
 		</c:when>
 	</c:choose>
 
@@ -244,7 +253,7 @@ li {
 				<c:if test="${!empty productList}">
 					<div>
 						<!-- <ul> -->
-						<div class="row w3-card-8 w3-margin" style="margin-bottom: 0px">
+						<div class="row w3-card-8 w3-grey" style="margin-bottom: 0px">
 							<br>
 							<c:forEach items="${productList}" var="product">
 								<div class="col-xs-2 ">
@@ -258,10 +267,10 @@ li {
 													<c:when test="${LoggedIn}">
 														<form action="addtoCart/${userId}/${product.id}">
 															<input type="number" value="1" name="quantity"
-																class="btn btn-xs btn-primary   col-xs-6 ">
-															<input type="submit" value="Add" class="btn btn-xs col-xs-6 btn-primary">
+																class="btn btn-xs btn-primary   col-xs-6 "> <input
+																type="submit" value="Add"
+																class="btn btn-xs col-xs-6 btn-primary">
 														</form>
-														
 													</c:when>
 												</c:choose>
 											</p>
@@ -311,6 +320,7 @@ li {
 		</div>
 	</div> --%>
 	<!-- Product List End -->
+	
 	<footer class="footer-distributed w3-card-4 w3-black w3-margin-0"
 		style="opacity: 0.9">
 		<div class="footer-left">

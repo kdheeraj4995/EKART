@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.niit.dao.CartDAO;
 import com.niit.dao.CategoryDAO;
 import com.niit.dao.ProductDAO;
+import com.niit.dao.SupplierDAO;
 import com.niit.dao.UserDetailsDAO;
-import com.niit.models.Category;
 import com.niit.models.Product;
 import com.niit.models.UserDetails;
 
@@ -28,6 +28,8 @@ public class LoginController {
 	CategoryDAO categoryDAO;
 	@Autowired
 	ProductDAO productDAO;
+	@Autowired
+	SupplierDAO supplierDAO;
 	@Autowired
 	UserDetailsDAO userDetailsDAO;
 	@Autowired
@@ -87,6 +89,8 @@ public class LoginController {
 		    	 session.setAttribute("Administrator", "true");
 		    	 model.addAttribute("product",  new Product());
 		    	 model.addAttribute("ProductPageClicked", "true");
+		    	 model.addAttribute("supplierList",supplierDAO.list());
+		    	 model.addAttribute("categoryList",categoryDAO.list());
 			 }
 		}
 		return "Welcome";
@@ -116,6 +120,7 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/";
 	}*/
+	
 	@RequestMapping(value="pay")
 	public String pay(HttpSession session)
 	{
