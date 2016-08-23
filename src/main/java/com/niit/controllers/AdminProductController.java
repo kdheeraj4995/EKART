@@ -63,7 +63,7 @@ public class AdminProductController {
 		productDAO.saveOrUpdate(product);
 		MultipartFile file=product.getImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\"+product.getId()+".jpg");
+        path = Paths.get(rootDirectory + "\\resources\\images\\product\\"+product.getId()+".jpg");
         if (file != null && !file.isEmpty()) {
             try {
             	System.out.println("Image Saving Start");
@@ -71,7 +71,9 @@ public class AdminProductController {
             	System.out.println("Image Saved");
             } catch (Exception e) {
                 e.printStackTrace();
+                System.out.println("Error");
                 throw new RuntimeException("item image saving failed.", e);
+               
             }
         }
 		return "redirect:/product";

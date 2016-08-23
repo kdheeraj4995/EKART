@@ -86,8 +86,4 @@ public class Product {
 	private MultipartFile image;
 
 	
-	
-	
-
-	
 }

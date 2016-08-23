@@ -63,7 +63,7 @@ public class AdminSupplierController {
 
 	@RequestMapping(value = { "removesupplier/{id}", "editsupplier/removesupplier/{id}" })
 	public String removeSupplier(@PathVariable("id") String id, Model model, HttpServletRequest request) throws Exception {
-		String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\supplier\\";
+		/*String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\supplier\\";*/
 	/*	MultiPartController.deleteimage(path, id+".jpg");*/
 		supplierDAO.delete(id);
 		model.addAttribute("message", "Successfully Deleted");

@@ -259,7 +259,7 @@ li {
 								<div class="col-xs-2 ">
 									<div class="thumbnail">
 										<img height="150px" width="150px" alt="${product.id}"
-											src="<c:url value="/WEB-INF/resources/images/${product.id}.jpg"></c:url>">
+											src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
 										<div class="caption">
 											<p>
 												${product.name}

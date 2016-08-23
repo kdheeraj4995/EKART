@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addproduct"></c:url>
-			<form:form action="${addAction}" commandName="product">
+			<form:form action="${addAction}" commandName="product" enctype="multipart/form-data" method="post">
 
 
 				<table>
@@ -122,7 +122,7 @@
 	</div>
 	<!--  -->
 	<c:choose>
-		<c:when test="${!EditCategory}">
+		<c:when test="${!EditProduct}">
 			<div class="container" data-ng-app="myApp"
 				data-ng-controller="MyController" data-ng-init="getDataFromServer()">
 				<form>
