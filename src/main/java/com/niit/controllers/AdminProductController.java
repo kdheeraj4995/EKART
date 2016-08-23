@@ -1,6 +1,8 @@
 package com.niit.controllers;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -73,7 +75,6 @@ public class AdminProductController {
                 e.printStackTrace();
                 System.out.println("Error");
                 throw new RuntimeException("item image saving failed.", e);
-               
             }
         }
 		return "redirect:/product";
@@ -92,10 +93,19 @@ public class AdminProductController {
 
 	@RequestMapping(value = { "removeproduct/{id}", "editproduct/removeproduct/{id}" })
 	public String removeproduct(@PathVariable("id") String id, Model model,HttpServletRequest request) throws Exception {
-		String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\product\\";
-		MultiPartController.deleteimage(path, id+".jpg");
+		/*String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\product\\";
+		MultiPartController.deleteimage(path, id+".jpg");*/
 		productDAO.delete(id);
 		model.addAttribute("message", "Successfully Deleted");
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "\\resources\\images\\product\\"+id+".jpg");
+	        if (Files.exists(path)) {
+	            try {
+	                Files.delete(path);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
 		return "redirect:/product";
 	}
 }

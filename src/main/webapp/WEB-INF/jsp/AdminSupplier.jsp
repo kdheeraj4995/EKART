@@ -33,15 +33,12 @@
 </script>
 </head>
 <body style="padding-top: 75px">
-
 	<div class="container row">
 		<div class="col-sm-3">
 		</div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addsupplier"></c:url>
 			<form:form action="${addAction}" commandName="supplier">
-
-
 				<table>
 					<tr>
 						<td><form:label class="btn btn-default btn-block" path="id">
@@ -97,10 +94,8 @@
 						class="w3-input w3-animate-input w3-border w3-round w3-small"
 						data-ng-model="search" type="text" placeholder=" Search Supplier"
 						style="width: 20%">
-
 				</form>
 				<br>
-				
 				<table class="table table-bordered table-hover ">
 					<thead>
 						<tr >
