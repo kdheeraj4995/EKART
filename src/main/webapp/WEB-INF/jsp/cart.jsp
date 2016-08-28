@@ -11,7 +11,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body style="padding-top:100px">
+<body style="padding-top:80px">
 <div id="cart">
 <div class="container">
 	<div class="row">
@@ -49,6 +49,11 @@
 							</div>	
 					</div>
 					<hr>
+				<c:if test="${!empty EmptyCart}">
+				<div style=" display:table-cell; vertical-align:middle; text-align:center">
+					<img width="50%"  alt="Empty Cart"  src="<c:url value="/resources/images/emptycart.jpg"></c:url>">
+					</div>
+				</c:if>
 				<c:if test="${!empty CartList}">
 				<c:forEach items="${CartList}" var="cart">
 					<div class="row">

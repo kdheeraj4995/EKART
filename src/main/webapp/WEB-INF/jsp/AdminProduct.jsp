@@ -94,7 +94,7 @@
 						<td><form:label class="btn btn-default btn-block" path="price">
 								<spring:message text="Price" />
 							</form:label></td>
-						<td><form:input type="number" class="form-control" path="price"
+						<td><form:input type="number" class="form-control" min="1" step="1" path="price"
 								required="true" /></td>
 					</tr>
 					<tr>

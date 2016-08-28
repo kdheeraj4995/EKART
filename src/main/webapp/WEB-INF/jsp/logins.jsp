@@ -8,14 +8,14 @@
 <title>Login</title>
 <link href="<c:url value="/resources/css/stylee.css" />" rel="stylesheet">
 </head>
-<body style="padding-top:75px">
+<body style="padding-top:60px">
 	<div class="container">
 		<section id="content">
 			<form action="perform_login" method="post">
 				<h1>Login Form</h1>
 				<div>
 					<input type="text" placeholder="Username" required id="username" name="username" 
-						pattern=".{5,10}" title="minimum length for name is 5"/>
+						pattern=".{5,10}" title="minimum length for username is 5"/>
 				</div>
 				<div>
 					<input type="password" placeholder="Password" required id="password" name="password" 
