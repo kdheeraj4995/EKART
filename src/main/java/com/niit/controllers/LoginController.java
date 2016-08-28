@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.dao.CartDAO;
 import com.niit.dao.CategoryDAO;
@@ -52,16 +53,18 @@ public class LoginController {
 		mv.addAttribute("productList", productDAO.list());*/
 		mv.addAttribute("IfRegisterClicked", "true");
 		mv.addAttribute("HideOthers","true");
+		mv.addAttribute("HideOthers","true");
+		
 		return "Welcome";
 	}
 
 	@RequestMapping(value = "adduser", method = RequestMethod.POST)
-	public String UserRegister(@ModelAttribute("userDetails") UserDetails userDetails, Model mv) {
+	public String UserRegister(@ModelAttribute("userDetails") UserDetails userDetails,RedirectAttributes attributes) {
 		userDetails.setEnabled("TRUE");
 		userDetails.setRole("ROLE_USER");
 		userDetailsDAO.saveOrUpdate(userDetails);
-		mv.addAttribute("message", "Registration Success");
-		return "redirect:/Welcome";
+		attributes.addFlashAttribute("SuccessMessage","Registration Successfull");
+		return "redirect:Register";
 	}
 
 	@SuppressWarnings("unchecked")

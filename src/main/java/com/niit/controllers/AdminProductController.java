@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.niit.dao.CategoryDAO;
@@ -60,8 +61,8 @@ public class AdminProductController {
 	}
 
 	@RequestMapping(value = { "addproduct", "editproduct/addproduct" }, method = RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product") Product product , HttpServletRequest request) {
-		
+	public String addProduct(@ModelAttribute("product") Product product , HttpServletRequest request,RedirectAttributes attributes) {
+		attributes.addFlashAttribute("SuccessMessage", "Product has been added/Updated Successfully");
 		productDAO.saveOrUpdate(product);
 		MultipartFile file=product.getImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -81,20 +82,20 @@ public class AdminProductController {
 	}
 
 	@RequestMapping("editproduct/{id}")
-	public String editProduct(@PathVariable("id") String id, Model model) {
+	public String editProduct(@PathVariable("id") int id, Model model) {
 		System.out.println("editProduct");
 		model.addAttribute("product", this.productDAO.get(id));
 		model.addAttribute("productList", productDAO.list());
 		model.addAttribute("categoryList",categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
 		model.addAttribute("ProductPageClicked", "true");
+		model.addAttribute("EditProduct", "true");
 		return "Welcome";
 	}
 
 	@RequestMapping(value = { "removeproduct/{id}", "editproduct/removeproduct/{id}" })
-	public String removeproduct(@PathVariable("id") String id, Model model,HttpServletRequest request) throws Exception {
-		/*String path=request.getSession().getServletContext().getRealPath("/")+"\\resources\\images\\product\\";
-		MultiPartController.deleteimage(path, id+".jpg");*/
+	public String removeproduct(@PathVariable("id") int id, Model model,HttpServletRequest request,RedirectAttributes attributes) throws Exception {
+		attributes.addFlashAttribute("DeleteMessage", "Product has been deleted Successfully");
 		productDAO.delete(id);
 		model.addAttribute("message", "Successfully Deleted");
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");

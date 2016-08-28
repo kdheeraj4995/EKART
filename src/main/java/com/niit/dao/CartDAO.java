@@ -18,7 +18,7 @@ public interface CartDAO {
 	
 	public long CartPrice(int userId);	
 	
-	public Cart getitem(String prodId,int userId);
+	public Cart getitem(int prodId,int userId);
 	
 	public long cartsize(int userId);
 	

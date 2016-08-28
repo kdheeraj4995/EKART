@@ -25,7 +25,7 @@ public class CartController {
 	
 	
 	@RequestMapping("addtoCart/{userId}/{id}")
-	public String addToCart(@PathVariable("id") String Productid,@PathVariable("userId") int userId,@RequestParam("quantity") int q,HttpSession session)throws Exception 
+	public String addToCart(@PathVariable("id") int Productid,@PathVariable("userId") int userId,@RequestParam("quantity") int q,HttpSession session)throws Exception 
 	{
 		if (cartDAO.getitem(Productid, userId)!= null ){
 			Cart item=cartDAO.getitem(Productid, userId);

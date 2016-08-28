@@ -1,6 +1,5 @@
 package com.niit.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +13,6 @@ public class UserDetails {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "userId")
 	private int userId;
 	private String name;
 	

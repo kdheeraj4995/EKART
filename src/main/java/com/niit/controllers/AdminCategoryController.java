@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.niit.dao.CategoryDAO;
@@ -39,12 +40,13 @@ public class AdminCategoryController {
 		return "Welcome";
 	}
 	@RequestMapping(value = { "addcategory", "editcategory/addcategory" }, method = RequestMethod.POST)
-	public String addCategory(@ModelAttribute("category") Category category) {
+	public String addCategory(@ModelAttribute("category") Category category,RedirectAttributes attributes) {
 		categoryDAO.saveOrUpdate(category);
+		attributes.addFlashAttribute("SuccessMessage", "Category has been added/Updated Successfully");
 		return "redirect:/category";
 	}
 	@RequestMapping("editcategory/{id}")
-	public String editCategory(@PathVariable("id") String id, Model model) {
+	public String editCategory(@PathVariable("id") int id, Model model) {
 		System.out.println("editCategory");
 		model.addAttribute("category", this.categoryDAO.get(id));
 		model.addAttribute("categoryList", categoryDAO.list());
@@ -53,9 +55,9 @@ public class AdminCategoryController {
 		return "Welcome";
 	}
 	@RequestMapping(value = { "removecategory/{id}", "editcategory/removecategory/{id}" })
-	public String removeCategory(@PathVariable("id") String id, Model model) throws Exception {
+	public String removeCategory(@PathVariable("id") int id,RedirectAttributes attributes) throws Exception {
 		categoryDAO.delete(id);
-		model.addAttribute("message", "Successfully Deleted");
+		attributes.addFlashAttribute("DeleteMessage", "Category has been deleted Successfully");
 		return "redirect:/category";
 	}
 }

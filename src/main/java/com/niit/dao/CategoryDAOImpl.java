@@ -37,20 +37,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Transactional
 	public void saveOrUpdate(Category category) {
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
-		
-		
-	
 	}
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		Category CategoryToDelete = new Category();
 		CategoryToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(CategoryToDelete);
 	}
 
 	@Transactional
-	public Category get(String id) {
-		String hql = "from"+" Category"+" where id=" + "'"+id+"'";
+	public Category get(int id) {
+		String hql = "from"+" Category"+" where id=" + id;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -63,6 +60,4 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		return null;
 	}
-
-
 }

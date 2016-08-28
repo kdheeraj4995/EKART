@@ -40,15 +40,15 @@ public class SupplierDAOImpl implements SupplierDAO {
 	
 	}
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		Supplier SupplierToDelete = new Supplier();
 		SupplierToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(SupplierToDelete);
 	}
 
 	@Transactional
-	public Supplier get(String id) {
-		String hql = "from"+" Supplier"+" where id=" + "'"+id+"'";
+	public Supplier get(int id) {
+		String hql = "from"+" Supplier"+" where id=" +id;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		

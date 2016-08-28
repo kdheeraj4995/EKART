@@ -76,8 +76,8 @@ public class CartDAOImpl implements CartDAO {
 	}
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public Cart getitem(String prodId, int userId) {
-		String hql = "from"+" Cart"+" where Status='C'and userid="+userId+" and productid="+"'"+prodId+"'";
+	public Cart getitem(int prodId, int userId) {
+		String hql = "from"+" Cart"+" where Status='C'and userid="+userId+" and productid="+prodId;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart> list = (List<Cart>) query.list();

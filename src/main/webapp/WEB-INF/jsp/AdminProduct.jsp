@@ -40,23 +40,41 @@
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addproduct"></c:url>
 			<form:form action="${addAction}" commandName="product" enctype="multipart/form-data" method="post">
-
-
-				<table>
+				<table>		
+				<tr>
+						<c:choose>
+							<c:when test="${!empty SuccessMessage}">
+								<td colspan="2">
+									<div class="alert alert-success fade in">
+										<a href="#" class="close" data-dismiss="alert"
+											aria-label="close">&times;</a>${SuccessMessage}
+									</div>
+								</td>
+							</c:when>
+							<c:when test="${!empty DeleteMessage}">
+								<td colspan="2">
+									<div class="alert alert-danger fade in">
+										<a href="#" class="close" data-dismiss="alert"
+											aria-label="close">&times;</a>${DeleteMessage}
+									</div>
+								</td>
+							</c:when>
+						</c:choose>
 					<tr>
-						<td><form:label class="btn btn-default btn-block" path="id">
+						
+						<c:choose>
+							<c:when test="${product.id gt 0}">
+							<td><form:label class="btn btn-default btn-block" path="id">
 								<spring:message text="Id" />
 							</form:label></td>
-						<c:choose>
-							<c:when test="${!empty product.id}">
 								<td><form:input class="form-control" path="id"
 										readonly="true" /></td>
 							</c:when>
-							<c:otherwise>
+							<%-- <c:otherwise>
 								<td><form:input class="form-control" path="id"
 										pattern=".{2,10}" required="true"
 										title="id should contains 2 to 10 characters" /></td>
-							</c:otherwise>
+							</c:otherwise> --%>
 						</c:choose>
 					<tr>
 						<td><form:label class="btn btn-default btn-block" path="name">

@@ -40,15 +40,15 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	}
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		Product ProductToDelete = new Product();
 		ProductToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(ProductToDelete);
 	}
 
 	@Transactional
-	public Product get(String id) {
-		String hql = "from"+" Product"+" where id=" + "'"+id+"'";
+	public Product get(int id) {
+		String hql = "from"+" Product"+" where id=" + id;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -63,8 +63,8 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Transactional
-	public List<Product> getcatitem(String id) {
-		String hql = "from"+" Product"+" where categoryid=" + "'"+id+"'";
+	public List<Product> getcatitem(int id) {
+		String hql = "from"+" Product"+" where categoryid=" +id;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		

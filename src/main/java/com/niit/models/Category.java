@@ -1,6 +1,7 @@
 package com.niit.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
@@ -11,15 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class Category {
 	@Id
-	private String id;
-	private String name;
-	private String description;
-	public String getId() {
+	@GeneratedValue
+	private int id;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
+	private String name;
+	private String description;
+	
 	public String getName() {
 		return name;
 	}
