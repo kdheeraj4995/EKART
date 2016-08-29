@@ -27,7 +27,7 @@ public class DynamicNavbar {
 	public ModelAndView dynamicNav(HttpSession session) {
 		ModelAndView mv = new ModelAndView("Welcome");
 		session.setAttribute("categoryList", categoryDAO.list());
-		session.setAttribute("productList", productDAO.list());
+		session.setAttribute("productList6", productDAO.Homelist());
 		return mv;
 	}
 
@@ -57,5 +57,12 @@ public class DynamicNavbar {
 		return "redirect:/Welcome";
 	}
 
-
+	@RequestMapping("IndividualItem/{id}")
+	public String IndividualItem(@PathVariable("id") int id,RedirectAttributes attributes)
+	{
+		attributes.addFlashAttribute("IndividualItemClicked", "true");
+		attributes.addFlashAttribute("IndividualProduct", productDAO.getindividual(id));
+		attributes.addFlashAttribute("HideOthers", "true");
+		return "redirect:/Welcome";
+	}
 }

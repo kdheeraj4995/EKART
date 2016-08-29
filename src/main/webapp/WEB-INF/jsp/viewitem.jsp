@@ -43,11 +43,12 @@
 	<div class="container">
 		<c:forEach items="${productList}" var="product">
 			<div class="col-xs-3 ">
-				<div class="img">
-					<img height="192px" width="192px" alt="${product.id}"
-						src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
+				<div class="img"><a href="IndividualItem/${product.id}">
+					<img height="192px" width="192px" class="img-rounded" alt="${product.id}"
+						src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>"></a>
 					<div class="desc">
 						<p>
+						
 							${product.name}<br> <i class="fa fa-inr" aria-hidden="true"></i> ${product.price}
 							<c:choose>
 								<c:when test="${LoggedIn}">
@@ -56,6 +57,7 @@
 											class=" form-control  btn-block  "> <input
 											type="submit" value="Add to Cart"
 											class="btn btn-xs btn-success btn-block">
+											
 									</form>
 								</c:when>
 							</c:choose>

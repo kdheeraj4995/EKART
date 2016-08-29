@@ -18,4 +18,6 @@ public interface ProductDAO {
 	public List<Product> getcatitem(int id);
 	
 	public List<Product> Homelist();
+	
+	public List<Product> getindividual(int id);
 }

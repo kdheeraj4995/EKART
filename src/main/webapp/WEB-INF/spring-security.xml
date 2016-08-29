@@ -53,6 +53,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 			access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/placeorder/**"
 			access="hasRole('ROLE_USER')" />
+		
 
 		<security:form-login login-page="/login"
 			default-target-url="/" login-processing-url="/perform_login"

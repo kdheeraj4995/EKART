@@ -126,6 +126,10 @@ li {
 			<c:import url="/WEB-INF/jsp/cart.jsp">
 			</c:import>
 		</c:when>
+		<c:when test="${IndividualItemClicked}">
+			<c:import url="/WEB-INF/jsp/IndividualItem.jsp">
+			</c:import>
+		</c:when>
 		<c:when test="${IfPaymentClicked}">
 			<c:import url="/WEB-INF/jsp/Payment.jsp">
 			</c:import>
@@ -263,12 +267,12 @@ li {
 							<c:forEach items="${productList6}" var="product">
 								<div class="col-xs-2 ">
 									<div class="img">
-										<img height="192px" width="192px" alt="${product.id}"
+										<img height="192px" width="192px"  alt="${product.id}"
 											src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
 										<div class="desc">
 											<p>
 												${product.name}<br> <i class="fa fa-inr"
-													aria-hidden="true"></i>${product.price}
+													aria-hidden="true"></i> ${product.price}
 												<%-- <c:choose>
 													<c:when test="${LoggedIn}">
 														<form action="addtoCart/${userId}/${product.id}">
