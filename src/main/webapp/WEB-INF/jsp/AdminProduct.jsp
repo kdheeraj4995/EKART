@@ -158,7 +158,7 @@
 							<th>Product Name</th>
 							<th>Product Description</th>
 							<th>Product Price</th>
-							<th>Supplier Id</th>
+							<!-- <th>Supplier Id</th> -->
 							<th>Category Id</th>
 							<th>Edit</th>
 							<th>Delete</th>
@@ -171,7 +171,7 @@
 							<td>{{product.name}}</td>
 							<td>{{product.description}}</td>
 							<td>{{product.price}}</td>
-							<td>{{product.supplierid}}</td>
+							<!-- <td>{{product.supplierid}}</td> -->
 							<td>{{product.categoryid}}</td>
 							<td><a class="btn btn-info btn-xs"
 								href="editproduct/{{product.id}}">Edit</a></td>

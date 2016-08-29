@@ -1,0 +1,26 @@
+.container {
+	padding:25px auto;
+	margin: 25px auto;
+	position: relative;
+}
+
+div.img {
+/* 	margin: 5px; */
+	border: 1px solid #ccc;
+	float: left;
+	padding:10px auto;
+	width: 160px;
+}
+
+div.img:hover {
+	border: 1px solid #777;
+}
+
+div.img img {
+	width: 100%;
+	height: auto;
+}
+
+div.desc {
+	padding: 15px;
+}

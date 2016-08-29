@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.dao.CategoryDAO;
 import com.niit.dao.ProductDAO;
@@ -34,7 +35,7 @@ public class DynamicNavbar {
 	public String returnhome(Model mv) {
 	
 		mv.addAttribute("categoryList", categoryDAO.list());
-		mv.addAttribute("productList", productDAO.list());
+		mv.addAttribute("productList6", productDAO.Homelist());
 		return "Welcome";
 	}
 
@@ -42,15 +43,19 @@ public class DynamicNavbar {
 	public ModelAndView logoutsession(HttpSession session) {
 		ModelAndView mv = new ModelAndView("Welcome");
 		session.setAttribute("categoryList", categoryDAO.list());
-		session.setAttribute("productList", productDAO.list());
+		session.setAttribute("productList6", productDAO.Homelist());
 		return mv;
 	}
 	@RequestMapping("view/{category}")
-	public String view(@PathVariable("category") String categoryid,  Model mv)
+	public String view(@PathVariable("category") int categoryid,RedirectAttributes attributes)
 	{
+		attributes.addFlashAttribute("productList",productDAO.getcatitem(categoryid));
+		attributes.addFlashAttribute("ViewCategoryClicked", "true");
+		attributes.addFlashAttribute("HideOthers","true");
 		/*mv.addAttribute("productList",productDAO.getcatitem(categoryid));
 		mv.addAttribute("ViewCategoryClicked", "true");*/
 		return "redirect:/Welcome";
 	}
+
 
 }

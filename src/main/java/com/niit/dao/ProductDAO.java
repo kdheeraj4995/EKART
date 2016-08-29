@@ -16,4 +16,6 @@ public interface ProductDAO {
 	public void delete(int id);
 
 	public List<Product> getcatitem(int id);
+	
+	public List<Product> Homelist();
 }

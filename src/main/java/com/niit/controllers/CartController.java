@@ -25,6 +25,7 @@ public class CartController {
 	@RequestMapping("addtoCart/{userId}/{id}")
 	public String addToCart(@PathVariable("id") int Productid, @PathVariable("userId") int userId,
 			@RequestParam("quantity") int q, HttpSession session) throws Exception {
+		
 		if (cartDAO.getitem(Productid, userId) != null) {
 			Cart item = cartDAO.getitem(Productid, userId);
 			item.setQuantity(item.getQuantity() + q);
@@ -32,7 +33,7 @@ public class CartController {
 			item.setPrice(item.getPrice() + (q * p.getPrice()));
 			cartDAO.saveOrUpdate(item);
 			session.setAttribute("cartsize", cartDAO.cartsize((int) session.getAttribute("userId")));
-			return "redirect:/Welcome";
+			return "redirect:/view/"+p.getCategoryid();
 		} else {
 			Cart item = new Cart();
 			Product product = productDAO.get(Productid);
@@ -44,7 +45,7 @@ public class CartController {
 			item.setProductid(Productid);
 			cartDAO.saveOrUpdate(item);
 			session.setAttribute("cartsize", cartDAO.cartsize((int) session.getAttribute("userId")));
-			return "redirect:/Welcome";
+			return "redirect:/view/"+product.getCategoryid();
 		}
 
 	}
@@ -73,9 +74,7 @@ public class CartController {
 		model.addAttribute("CartList", cartDAO.get(userId));
 		if (cartDAO.cartsize((int) session.getAttribute("userId")) != 0) {
 			model.addAttribute("CartPrice", cartDAO.CartPrice(userId));
-		} 
-		else 
-		{
+		} else {
 			model.addAttribute("EmptyCart", "true");
 		}
 		model.addAttribute("IfViewCartClicked", "true");

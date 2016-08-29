@@ -52,21 +52,7 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getSupplierid() {
-		return supplierid;
-	}
-
-	public void setSupplierid(String supplierid) {
-		this.supplierid = supplierid;
-	}
-
-	public String getCategoryid() {
-		return categoryid;
-	}
-
-	public void setCategoryid(String categoryid) {
-		this.categoryid = categoryid;
-	}
+	
 
 	public MultipartFile getImage() {
 		return image;
@@ -82,9 +68,25 @@ public class Product {
 
 	private long price;
 	
-	private String supplierid;
+	private int supplierid;
 	
-	private String categoryid;
+	public int getSupplierid() {
+		return supplierid;
+	}
+
+	public void setSupplierid(int supplierid) {
+		this.supplierid = supplierid;
+	}
+
+	public int getCategoryid() {
+		return categoryid;
+	}
+
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
+
+	private int categoryid;
 	
 	@Transient
 	private MultipartFile image;

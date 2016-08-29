@@ -1,0 +1,38 @@
+body {
+	background: #DCDDDF
+		url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
+	color: #000;
+	font: 14px Arial;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+}
+
+.container {
+	padding:25px auto;
+	margin: 25px auto;
+	position: relative;
+}
+
+div.img {
+	margin-left: 30px;
+	border: 1px solid #ccc;
+	float: left;
+	padding:25px auto;
+	width: 192px;
+	margin-bottom:30px;
+}
+
+div.img:hover {
+	border: 1px solid #777;
+}
+
+div.img img {
+	width: 100%;
+	height: auto;
+}
+
+div.desc {
+	padding: 15px;
+
+}

@@ -42,6 +42,8 @@ li {
 <link href="<c:url value="/resources/css/font-awesome.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/HomePage.css" />"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script
@@ -55,7 +57,7 @@ li {
 		<nav>
 			<ul class="w3-navbar w3-black w3-card-2 w3-medium "
 				style="opacity: 0.9">
-				<li><a href="/Welcome" class="w3-hover-none"><i
+				<li><a href="Welcomepage" class="w3-hover-none"><i
 						class="fa fa-home"></i> E K A R T </a></li>
 				<c:choose>
 					<c:when test="${LoggedIn}">
@@ -91,7 +93,7 @@ li {
 								class="w3-navbar w3-light-grey w3-round w3-small menu w3-card-4 "
 								Style="width: 70%; margin-left: 15%; margin-top: -2px;">
 								<c:forEach items="${categoryList}" var="category">
-									<li><a href="view/${category.name}" class="w3-hover-none"><i
+									<li><a href="view/${category.id}" class="w3-hover-none"><i
 											class="fa fa-list-alt" aria-hidden="true"></i>
 											${category.name}</a></li>
 								</c:forEach>
@@ -140,10 +142,10 @@ li {
 			<c:import url="/WEB-INF/jsp/registers.jsp">
 			</c:import>
 		</c:when>
-		<%-- <c:when test="${ViewCategoryClicked}">
+		<c:when test="${ViewCategoryClicked}">
 			<c:import url="/WEB-INF/jsp/viewitem.jsp">
 			</c:import>
-		</c:when> --%>
+		</c:when>
 	</c:choose>
 
 	<c:choose>
@@ -247,23 +249,27 @@ li {
 
 
 	<!-- Product List-->
+
 	<c:if test="${empty HideOthers}">
+	
 		<c:choose>
 			<c:when test="${!Administrator}">
-				<c:if test="${!empty productList}">
+				<c:if test="${!empty productList6}">
 					<div>
 						<!-- <ul> -->
-						<div class="row w3-card-8 w3-grey" style="margin-bottom: 0px">
-							<br>
-							<c:forEach items="${productList}" var="product">
+						<div class="row w3-card-8 w3-dark-grey"
+							style=" padding-top:20px;padding-botton: 20px; padding-left: 20px;padding-bottom: 20px">
+							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
+							<c:forEach items="${productList6}" var="product">
 								<div class="col-xs-2 ">
-									<div class="thumbnail">
-										<img height="150px" width="150px" alt="${product.id}"
+									<div class="img">
+										<img height="192px" width="192px" alt="${product.id}"
 											src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
-										<div class="caption">
+										<div class="desc">
 											<p>
-												${product.name}
-												<c:choose>
+												${product.name}<br> <i class="fa fa-inr"
+													aria-hidden="true"></i>${product.price}
+												<%-- <c:choose>
 													<c:when test="${LoggedIn}">
 														<form action="addtoCart/${userId}/${product.id}">
 															<input type="number" value="1" name="quantity"
@@ -272,7 +278,7 @@ li {
 																class="btn btn-xs col-xs-6 btn-primary">
 														</form>
 													</c:when>
-												</c:choose>
+												</c:choose> --%>
 											</p>
 
 										</div>
@@ -303,6 +309,7 @@ li {
 			</c:when>
 		</c:choose>
 	</c:if>
+
 	<%-- <div class="row w3-card-8 w3-margin" style="margin-bottom: 0px">
 		<br>
 		<div class="col-xs-2 ">
@@ -320,7 +327,7 @@ li {
 		</div>
 	</div> --%>
 	<!-- Product List End -->
-	
+
 	<footer class="footer-distributed w3-card-4 w3-black w3-margin-0"
 		style="opacity: 0.9">
 		<div class="footer-left">
