@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addcategory"></c:url>
-			<form:form action="${addAction}" commandName="category">
+			<form:form action="${addAction}" modelAttribute="category">
 				<table>
 				<tr>
 						<c:choose>

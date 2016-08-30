@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +35,8 @@ public class AdminSupplierController {
 	}
 
 	@RequestMapping(value = { "supplier" })
-	public String SupplierPage(Model model) {
-		model.addAttribute("supplier", new Supplier());
+	public String SupplierPage(@ModelAttribute("supplier") Supplier supplier, BindingResult result,Model model) {
+		//model.addAttribute("supplier", new Supplier());
 		model.addAttribute("supplierList", supplierDAO.list());
 		model.addAttribute("SupplierPageClicked", "true");
 		return "Welcome";
@@ -51,13 +52,14 @@ public class AdminSupplierController {
 	}
 
 	@RequestMapping("editsupplier/{id}")
-	public String editSupplier(@PathVariable("id") int id, Model model) {
+	public String editSupplier(@PathVariable("id") int id, Model model,RedirectAttributes attributes) {
 		System.out.println("editSupplier");
-		model.addAttribute("supplier", this.supplierDAO.get(id));
-		model.addAttribute("supplierList", supplierDAO.list());
-		model.addAttribute("EditSupplier", "true");
-		model.addAttribute("SupplierPageClicked", "true");
-		return "Welcome";
+		attributes.addFlashAttribute("supplier", this.supplierDAO.get(id));
+	//	model.addAttribute("supplier", this.supplierDAO.get(id));
+	//	model.addAttribute("supplierList", supplierDAO.list());
+	//	model.addAttribute("EditSupplier", "true");
+	//	model.addAttribute("SupplierPageClicked", "true");
+		return "redirect:/supplier";
 	}
 
 	@RequestMapping(value = { "removesupplier/{id}" })

@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addproduct"></c:url>
-			<form:form action="${addAction}" commandName="product" enctype="multipart/form-data" method="post">
+			<form:form action="${addAction}" modelAttribute="product" enctype="multipart/form-data" method="post">
 				<table>		
 				<tr>
 						<c:choose>

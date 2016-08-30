@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,8 @@ public class AdminCategoryController {
 	}
 
 	@RequestMapping(value = { "category"})
-	public String CategoryPage(Model model) {
-		model.addAttribute("category", new Category());
+	public String CategoryPage(@ModelAttribute("category") Category category,BindingResult result,Model model) {
+		//model.addAttribute("category", new Category());
 		model.addAttribute("categoryList", categoryDAO.list());
 		model.addAttribute("CategoryPageClicked", "true");
 		return "Welcome";
@@ -46,13 +47,14 @@ public class AdminCategoryController {
 		return "redirect:/category";
 	}
 	@RequestMapping("editcategory/{id}")
-	public String editCategory(@PathVariable("id") int id, Model model) {
+	public String editCategory(@PathVariable("id") int id, Model model,RedirectAttributes attributes) {
 		System.out.println("editCategory");
-		model.addAttribute("category", this.categoryDAO.get(id));
-		model.addAttribute("categoryList", categoryDAO.list());
-		model.addAttribute("CategoryPageClicked", "true");
-		model.addAttribute("EditCategory", "true");
-		return "Welcome";
+		attributes.addFlashAttribute("category", this.categoryDAO.get(id));
+		//model.addAttribute("category", this.categoryDAO.get(id));
+		//model.addAttribute("categoryList", categoryDAO.list());
+		//model.addAttribute("CategoryPageClicked", "true");
+		//model.addAttribute("EditCategory", "true");
+		return "redirect:/category";
 	}
 	@RequestMapping(value = { "removecategory/{id}", "editcategory/removecategory/{id}" })
 	public String removeCategory(@PathVariable("id") int id,RedirectAttributes attributes) throws Exception {

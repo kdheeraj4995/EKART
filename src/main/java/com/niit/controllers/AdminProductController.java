@@ -8,10 +8,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,8 +51,8 @@ public class AdminProductController {
 	}	
  
 	@RequestMapping(value = { "product"})
-	public String ProductPage(Model model) {
-		model.addAttribute("product", new Product());
+	public String ProductPage(@ModelAttribute("product") Product product,BindingResult result,  Model model) {
+		//model.addAttribute("product", new Product());
 		model.addAttribute("productList", productDAO.list());
 		model.addAttribute("categoryList",categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
@@ -61,7 +61,7 @@ public class AdminProductController {
 	}
 
 	@RequestMapping(value = { "addproduct", "editproduct/addproduct" }, method = RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product") Product product , HttpServletRequest request,RedirectAttributes attributes) {
+	public String addProduct(@ModelAttribute("product") Product product ,HttpServletRequest request,RedirectAttributes attributes) {
 		attributes.addFlashAttribute("SuccessMessage", "Product has been added/Updated Successfully");
 		productDAO.saveOrUpdate(product);
 		MultipartFile file=product.getImage();
@@ -82,15 +82,16 @@ public class AdminProductController {
 	}
 
 	@RequestMapping("editproduct/{id}")
-	public String editProduct(@PathVariable("id") int id, Model model) {
+	public String editProduct(@PathVariable("id") int id, Model model,RedirectAttributes attributes) {
 		System.out.println("editProduct");
-		model.addAttribute("product", this.productDAO.get(id));
+		attributes.addFlashAttribute("product", this.productDAO.get(id));
+		/*model.addAttribute("product", this.productDAO.get(id));
 		model.addAttribute("productList", productDAO.list());
 		model.addAttribute("categoryList",categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
 		model.addAttribute("ProductPageClicked", "true");
-		model.addAttribute("EditProduct", "true");
-		return "Welcome";
+		model.addAttribute("EditProduct", "true");*/
+		return "redirect:/product";
 	}
 
 	@RequestMapping(value = { "removeproduct/{id}", "editproduct/removeproduct/{id}" })
