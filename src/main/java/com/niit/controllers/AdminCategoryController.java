@@ -40,7 +40,7 @@ public class AdminCategoryController {
 		model.addAttribute("CategoryPageClicked", "true");
 		return "Welcome";
 	}
-	@RequestMapping(value = { "addcategory", "editcategory/addcategory" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "addcategory" }, method = RequestMethod.POST)
 	public String addCategory(@ModelAttribute("category") Category category,RedirectAttributes attributes) {
 		categoryDAO.saveOrUpdate(category);
 		attributes.addFlashAttribute("SuccessMessage", "Category has been added/Updated Successfully");
@@ -56,7 +56,7 @@ public class AdminCategoryController {
 		//model.addAttribute("EditCategory", "true");
 		return "redirect:/category";
 	}
-	@RequestMapping(value = { "removecategory/{id}", "editcategory/removecategory/{id}" })
+	@RequestMapping(value = { "removecategory/{id}"})
 	public String removeCategory(@PathVariable("id") int id,RedirectAttributes attributes) throws Exception {
 		categoryDAO.delete(id);
 		attributes.addFlashAttribute("DeleteMessage", "Category has been deleted Successfully");

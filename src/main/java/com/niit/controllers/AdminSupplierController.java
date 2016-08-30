@@ -42,7 +42,7 @@ public class AdminSupplierController {
 		return "Welcome";
 	}
 
-	@RequestMapping(value = { "addsupplier", "editsupplier/addsupplier" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "addsupplier"}, method = RequestMethod.POST)
 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier,
 			RedirectAttributes attributes) {
 		supplierDAO.saveOrUpdate(supplier);

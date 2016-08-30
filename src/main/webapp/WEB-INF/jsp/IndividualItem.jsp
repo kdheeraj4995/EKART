@@ -38,7 +38,7 @@
 						
 						<div class="form-group">
 							 <input type="text"
-								class="form-control" value="${product.price}"
+								class="form-control" value="Rs. ${product.price}"
 								readonly="readonly">
 						</div>
 						

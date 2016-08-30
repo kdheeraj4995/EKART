@@ -60,7 +60,7 @@ public class AdminProductController {
 		return "Welcome";
 	}
 
-	@RequestMapping(value = { "addproduct", "editproduct/addproduct" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "addproduct"}, method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("product") Product product ,HttpServletRequest request,RedirectAttributes attributes) {
 		attributes.addFlashAttribute("SuccessMessage", "Product has been added/Updated Successfully");
 		productDAO.saveOrUpdate(product);
@@ -94,7 +94,7 @@ public class AdminProductController {
 		return "redirect:/product";
 	}
 
-	@RequestMapping(value = { "removeproduct/{id}", "editproduct/removeproduct/{id}" })
+	@RequestMapping(value = { "removeproduct/{id}"})
 	public String removeproduct(@PathVariable("id") int id, Model model,HttpServletRequest request,RedirectAttributes attributes) throws Exception {
 		attributes.addFlashAttribute("DeleteMessage", "Product has been deleted Successfully");
 		productDAO.delete(id);

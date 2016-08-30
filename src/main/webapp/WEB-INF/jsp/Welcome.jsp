@@ -55,31 +55,31 @@ li {
 <body>
 	<div class="w3-top">
 		<nav>
-			<ul class="w3-navbar w3-black w3-card-2 w3-medium "
+			<ul class="w3-navbar w3-black w3-card-2 w3-medium  "
 				style="opacity: 0.9">
-				<li><a href="Welcomepage" class="w3-hover-none"><i
+				<li><a href="Welcomepage" class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 						class="fa fa-home"></i> E K A R T </a></li>
 				<c:choose>
 					<c:when test="${LoggedIn}">
 
 						<li style="float: right"><a href="perform_logout"
-							class="w3-hover-none"><i class="fa fa-sign-out"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-sign-out"></i></a></li>
 						<c:choose>
 							<c:when test="${!Administrator}">
 								<li style="float: right"><a href="viewcart"
-									class="w3-hover-none"><i class="fa fa-shopping-cart"></i>(${cartsize})</a></li>
+									class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-shopping-cart"></i>(${cartsize})</a></li>
 							</c:when>
 						</c:choose>
 
-						<li style="float: right"><a href="#" class="w3-hover-none"><i
+						<li style="float: right"><a href="#" class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 								class="fa fa-user"></i> Hi, ${name}</a></li>
 					</c:when>
 
 					<c:otherwise>
 						<li style="float: right"><a href="Register"
-							class="w3-hover-none"><i class="fa fa-user-plus"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-user-plus"></i></a></li>
 						<li style="float: right"><a href="login"
-							class="w3-hover-none"><i class="fa fa-sign-in"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-sign-in"></i></a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -255,14 +255,14 @@ li {
 	<!-- Product List-->
 
 	<c:if test="${empty HideOthers}">
-	
+	<div class="row  w3-black " style="padding-left: 35px;opacity: 0.9"><h4>Latest Items</h4></div>
 		<c:choose>
 			<c:when test="${!Administrator}">
 				<c:if test="${!empty productList6}">
 					<div>
 						<!-- <ul> -->
-						<div class="row w3-card-8 w3-dark-grey"
-							style=" padding-top:20px;padding-botton: 20px; padding-left: 20px;padding-bottom: 20px">
+						<div class="row w3-card-8 "
+							style=" padding-top:20px;padding-botton: 20px; padding-left: 20px;padding-bottom: 20px; ">
 							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
 							<c:forEach items="${productList6}" var="product">
 								<div class="col-xs-2 ">
