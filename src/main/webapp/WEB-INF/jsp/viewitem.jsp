@@ -42,9 +42,9 @@
 							 --%>
 	<div class="container">
 		<c:forEach items="${productList}" var="product">
-			<div class="col-xs-3 ">
+			<div class="col-xs-3 w3-animate-zoom">
 				<div class="img"><a href="IndividualItem/${product.id}">
-					<img height="192px" width="192px" class="img-rounded" alt="${product.id}"
+					<img height="192px" width="192px"  alt="${product.id}"
 						src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>"></a>
 					<div class="desc">
 						<p>

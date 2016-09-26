@@ -16,7 +16,7 @@
 
 	<div class="container">
 		<c:forEach items="${IndividualProduct}" var="product">
-			<div class="col-xs-6 ">
+			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
 					<img alt="${product.id}"
 						src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-6 ">
+			<div class="col-xs-6 w3-animate-right">
 				<div class="img">
 					<div class="desc">
 						<p>

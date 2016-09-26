@@ -1,6 +1,5 @@
 package com.niit.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -64,7 +63,6 @@ public class Cart {
 	private int userid;
 	private String productname;
 	private long price;
-	@Column(columnDefinition="int default 1")
 	private int quantity;
 	private String status;
 	

@@ -24,4 +24,6 @@ public interface CartDAO {
 	
 	public void pay(int userId);
 	
+	public List<Cart> AdminReport();
+	
 }

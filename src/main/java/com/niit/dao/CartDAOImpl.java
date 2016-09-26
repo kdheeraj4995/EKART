@@ -102,4 +102,13 @@ public class CartDAOImpl implements CartDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();
 	}
+	@Transactional
+	public List<Cart> AdminReport() {
+		String hql = "from Cart where status='P'";
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Cart> list = (List<Cart>)query.list();
+		return list;
+	}
 }

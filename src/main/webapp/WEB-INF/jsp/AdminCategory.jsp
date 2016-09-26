@@ -35,13 +35,12 @@
 <body style="padding-top: 75px">
 
 	<div class="container row">
-		<div class="col-sm-3">
-		</div>
+		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addcategory"></c:url>
 			<form:form action="${addAction}" modelAttribute="category">
 				<table>
-				<tr>
+					<tr>
 						<c:choose>
 							<c:when test="${!empty SuccessMessage}">
 								<td colspan="2">
@@ -62,13 +61,13 @@
 						</c:choose>
 					<tr>
 					<tr>
-						
+
 						<c:choose>
-						
+
 							<c:when test="${category.id gt 0}">
-							<td><form:label class="btn btn-default btn-block" path="id">
-								<spring:message text="Id" />
-							</form:label></td>
+								<td><form:label class="btn btn-default btn-block" path="id">
+										<spring:message text="Id" />
+									</form:label></td>
 								<td><form:input class="form-control" path="id"
 										readonly="true" /></td>
 							</c:when>
@@ -86,7 +85,8 @@
 								required="true" /></td>
 					</tr>
 					<tr>
-						<td><form:label class="btn btn-default btn-block" path="description">
+						<td><form:label class="btn btn-default btn-block"
+								path="description">
 								<spring:message text="Description" />
 							</form:label></td>
 						<td><form:input class="form-control" path="description"
@@ -110,7 +110,8 @@
 	<c:choose>
 		<c:when test="${!EditCategory}">
 			<div class="container" data-ng-app="myApp"
-				data-ng-controller="MyController" data-ng-init="getDataFromServer()">
+				data-ng-controller="MyController" data-ng-init="getDataFromServer()"
+				style="overflow: auto; height: 400px; width: 70%">
 				<form>
 					<input
 						class="w3-input w3-animate-input w3-border w3-round w3-small"
@@ -121,7 +122,7 @@
 				<br>
 				<table class="table table-bordered table-hover ">
 					<thead>
-						<tr >
+						<tr>
 							<th>Category ID</th>
 							<th>Category Name</th>
 							<th>Category Description</th>
@@ -132,7 +133,7 @@
 					<tbody>
 						<tr
 							data-ng-repeat="category in categories | orderBy:sortType:sortReverse | filter:search">
-							<td >{{category.id}}</td>
+							<td>{{category.id}}</td>
 							<td>{{category.name}}</td>
 							<td>{{category.description}}</td>
 							<td><a class="btn btn-info btn-xs"

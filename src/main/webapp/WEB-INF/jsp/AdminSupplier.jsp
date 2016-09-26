@@ -108,7 +108,8 @@
 	<c:choose>
 		<c:when test="${!EditSupplier}">
 			<div class="container" data-ng-app="myApp"
-				data-ng-controller="MyController" data-ng-init="getDataFromServer()">
+				data-ng-controller="MyController" data-ng-init="getDataFromServer()"
+				style="overflow: auto; height: 400px; width: 70%">
 				<form>
 					<input
 						class="w3-input w3-animate-input w3-border w3-round w3-small"

@@ -4,12 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 <style>
 ul {
 	list-style: none;
-	padding: 0;
+	padding: 0; 
 	margin: 0;
 }
 
@@ -31,8 +31,7 @@ li {
 <title>E K A R T</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="<c:url value="/resources/css/demo.css" />" rel="stylesheet">
-<link
-	href="<c:url value="/resources/css/footer-distributed-with-address-and-phones.css" />"
+<link href="<c:url value="/resources/css/footer-distributed-with-address-and-phones.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -57,29 +56,36 @@ li {
 		<nav>
 			<ul class="w3-navbar w3-black w3-card-2 w3-medium  "
 				style="opacity: 0.9">
-				<li><a href="Welcomepage" class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+				<li><a href="Welcomepage"
+					class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 						class="fa fa-home"></i> E K A R T </a></li>
 				<c:choose>
 					<c:when test="${LoggedIn}">
 
 						<li style="float: right"><a href="perform_logout"
-							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-sign-out"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+								class="fa fa-sign-out"></i></a></li>
 						<c:choose>
 							<c:when test="${!Administrator}">
 								<li style="float: right"><a href="viewcart"
-									class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-shopping-cart"></i>(${cartsize})</a></li>
+									class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+										class="fa fa-shopping-cart"></i> <span
+										class="w3-badge w3-white">${cartsize}</span></a></li>
 							</c:when>
 						</c:choose>
 
-						<li style="float: right"><a href="#" class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+						<li style="float: right"><a href="#"
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 								class="fa fa-user"></i> Hi, ${name}</a></li>
 					</c:when>
 
 					<c:otherwise>
 						<li style="float: right"><a href="Register"
-							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-user-plus"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+								class="fa fa-user-plus"></i></a></li>
 						<li style="float: right"><a href="login"
-							class="w3-hover-none w3-text-sand w3-hover-text-white"><i class="fa fa-sign-in"></i></a></li>
+							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+								class="fa fa-sign-in"></i></a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -107,12 +113,18 @@ li {
 					<ul
 						class="w3-navbar w3-light-grey w3-round w3-small menu w3-card-4 "
 						Style="width: 70%; margin-left: 15%; margin-top: -2px;">
+						<!-- 		<li><a href="Report" class="w3-hover-none"><i
+								class="fa fa-cog fa-spin  fa-fw"></i> <span class="sr-only">Loading...</span>
+								Recent Order</a></li> -->
 						<li><a href="product" class="w3-hover-none"><i
-								class="fa fa-list" aria-hidden="true"></i> Products</a></li>
+								class="fa fa-refresh fa-spin  fa-fw"></i> <span class="sr-only">Loading...</span>
+								Products</a></li>
 						<li><a href="category" class="w3-hover-none"><i
-								class="fa fa-list" aria-hidden="true"></i> Category</a></li>
+								class="fa fa-refresh fa-spin  fa-fw"></i> <span class="sr-only">Loading...</span>
+								Category</a></li>
 						<li><a href="supplier" class="w3-hover-none"><i
-								class="fa fa-list" aria-hidden="true"></i> Supplier</a></li>
+								class="fa fa-refresh fa-spin  fa-fw"></i> <span class="sr-only">Loading...</span>
+								Supplier</a></li>
 					</ul>
 				</c:when>
 			</c:choose>
@@ -141,7 +153,6 @@ li {
 			<c:import url="/WEB-INF/jsp/logins.jsp">
 			</c:import>
 		</c:when>
-
 		<c:when test="${IfRegisterClicked}">
 			<c:import url="/WEB-INF/jsp/registers.jsp">
 			</c:import>
@@ -167,6 +178,12 @@ li {
 			<c:import url="/WEB-INF/jsp/AdminSupplier.jsp"></c:import>
 		</c:when>
 	</c:choose>
+	<c:choose>
+		<c:when test="${AdminReportClicked} ">
+			<c:import url="/WEB-INF/jsp/AdminReport.jsp">
+			</c:import>
+		</c:when>
+	</c:choose>
 
 	<!-- carousel -->
 	<c:choose>
@@ -176,7 +193,7 @@ li {
 					<div id="carousel-home" class="carousel slide">
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
-							<li class=" item1 active"></li>
+							<li class="item1 active"></li>
 							<li class="item2"></li>
 							<li class="item3"></li>
 							<li class="item4"></li>
@@ -193,7 +210,7 @@ li {
 									<span></span>
 								</div>
 							</div>
-							<div class="item ">
+							<div class="item">
 								<img
 									src="<c:url value="/resources/images/corousel/smart.jpg"></c:url>"
 									alt="Apple">
@@ -255,21 +272,28 @@ li {
 	<!-- Product List-->
 
 	<c:if test="${empty HideOthers}">
-	<div class="row  w3-black " style="padding-left: 35px;opacity: 0.9"><h4>Latest Items</h4></div>
+
 		<c:choose>
 			<c:when test="${!Administrator}">
 				<c:if test="${!empty productList6}">
 					<div>
+						<div align="center"
+							style="background-color: #111111; height: 141px; padding-top: 20px">
+							<img alt="Empty Cart"
+								src="<c:url value="/resources/images/Black-Friday-Banner.jpg"></c:url>">
+
+
+						</div>
 						<!-- <ul> -->
-						<div class="row w3-card-8 "
-							style=" padding-top:20px;padding-botton: 20px; padding-left: 20px;padding-bottom: 20px; ">
+						<div class="row  "
+							style="padding-top: 20px; padding-botton: 20px; padding-left: 20px; padding-bottom: 20px;">
 							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
 							<c:forEach items="${productList6}" var="product">
-								<div class="col-xs-2 ">
+								<div class="col-xs-2 w3-animate-zoom">
 									<div class="img">
-										<img height="192px" width="192px"  alt="${product.id}"
+										<img height="192px" width="192px" alt="${product.id}"
 											src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
-										<div class="desc">
+										<div class="desc w3-black" style="opacity: 0.9">
 											<p>
 												${product.name}<br> <i class="fa fa-inr"
 													aria-hidden="true"></i> ${product.price}
@@ -334,7 +358,7 @@ li {
 
 	<footer class="footer-distributed w3-card-4 w3-black w3-margin-0"
 		style="opacity: 0.9">
-		<div class="footer-left">
+		<div class="footer-left" style="margin-top: 10px">
 			<p>Payment Options</p>
 			<a href="#"><i class="fa fa-paypal" aria-hidden="true"></i> </a> . <a
 				href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i> </a> . <a
@@ -360,7 +384,7 @@ li {
 			<div>
 				<i class="fa fa-map-marker"></i>
 				<p>
-					<span>21 Revolution Street</span> Paris, France
+					<span>21 Revolution Street</span>
 				</p>
 			</div>
 			<div>
@@ -379,9 +403,7 @@ li {
 				<span>About the company</span> <a href="http://www.secura.e-sim.org"
 					title="Summus, website template creation">Summus</a> is a web
 				design and development studio. We build responsive HTML5 and CSS3
-				templates, integrating best web design practices and up-to-date web
-				technologies to create great user experiences. We love what we do
-				and we hope you do too!
+				templates, integrating best web design practices .
 			</p>
 		</div>
 	</footer>
