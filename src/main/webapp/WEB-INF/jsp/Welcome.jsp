@@ -38,7 +38,7 @@ li {
 <link href="<c:url value="/resources/css/bootstrap-theme.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/w3.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/font-awesome.min.css" />"
+<link href="<c:url value="  " />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/HomePage.css" />"
@@ -64,7 +64,7 @@ li {
 
 						<li style="float: right"><a href="perform_logout"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-sign-out"></i></a></li>
+								class="fa fa-sign-out"></i>Logout</a></li>
 						<c:choose>
 							<c:when test="${!Administrator}">
 								<li style="float: right"><a href="viewcart"
@@ -82,10 +82,10 @@ li {
 					<c:otherwise>
 						<li style="float: right"><a href="Register"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-user-plus"></i></a></li>
+								class="fa fa-user-plus"></i>Register</a></li>
 						<li style="float: right"><a href="login"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-sign-in"></i></a></li>
+								class="fa fa-sign-in"></i>Login</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

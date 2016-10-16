@@ -1,10 +1,13 @@
-package com.niit.models;
+package Save;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -49,6 +52,16 @@ public class Product {
 		this.price = price;
 	}
 
+	
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
 	private String name;
 
 	private String description;
@@ -75,17 +88,8 @@ public class Product {
 
 	private int categoryid;
 	
-	private byte[] image;
-
-
-
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
+	@Transient
+	private MultipartFile image;
 
 	
 }

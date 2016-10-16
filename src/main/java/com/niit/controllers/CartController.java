@@ -32,7 +32,7 @@ public class CartController {
 			Product p = productDAO.get(item.getProductid());
 			item.setPrice(item.getPrice() + (q * p.getPrice()));
 			cartDAO.saveOrUpdate(item);
-			session.setAttribute("cartsize", cartDAO.cartsize((int) session.getAttribute("userId")));
+			session.setAttribute("cartsize", cartDAO.cartsize( (int) session.getAttribute("userId")));
 			return "redirect:/view/"+p.getCategoryid();
 		} else {
 			Cart item = new Cart();

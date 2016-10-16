@@ -1,5 +1,6 @@
-package com.niit.controllers;
+/*package Save;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -60,13 +60,11 @@ public class AdminProductController {
 	}
 
 	@RequestMapping(value = { "addproduct" }, method = RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product") Product product, @RequestParam("file") MultipartFile file,
-			HttpServletRequest request,RedirectAttributes attributes) throws IOException {
+	public String addProduct(@ModelAttribute("product") Product product, HttpServletRequest request,
+			RedirectAttributes attributes) {
 		attributes.addFlashAttribute("SuccessMessage", "Product has been added/Updated Successfully");
-		product.setImage(file.getBytes());
-		
 		productDAO.saveOrUpdate(product);
-		/*MultipartFile file = product.getImage();
+		MultipartFile file = product.getImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\images\\product\\" + product.getId() + ".jpg");
 		if (file != null && !file.isEmpty()) {
@@ -79,7 +77,7 @@ public class AdminProductController {
 				System.out.println("Error");
 				throw new RuntimeException("item image saving failed.", e);
 			}
-		}*/
+		}
 		return "redirect:/product";
 	}
 
@@ -87,14 +85,14 @@ public class AdminProductController {
 	public String editProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
 		System.out.println("editProduct");
 		attributes.addFlashAttribute("product", this.productDAO.get(id));
-		/*
+		
 		 * model.addAttribute("product", this.productDAO.get(id));
 		 * model.addAttribute("productList", productDAO.list());
 		 * model.addAttribute("categoryList",categoryDAO.list());
 		 * model.addAttribute("supplierList", supplierDAO.list());
 		 * model.addAttribute("ProductPageClicked", "true");
 		 * model.addAttribute("EditProduct", "true");
-		 */
+		 
 		return "redirect:/product";
 	}
 
@@ -116,3 +114,4 @@ public class AdminProductController {
 		return "redirect:/product";
 	}
 }
+*/

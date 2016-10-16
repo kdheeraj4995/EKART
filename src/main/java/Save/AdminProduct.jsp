@@ -38,8 +38,8 @@
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
 			<c:url var="addAction" value="addproduct"></c:url>
-			<form:form action="${addAction}" method="post" enctype="multipart/form-data"  modelAttribute="product"
-				>
+			<form:form action="${addAction}" modelAttribute="product"
+				enctype="multipart/form-data" method="post">
 				<table>
 					<tr>
 						<c:choose>
@@ -124,12 +124,13 @@
 							</form:select></td>
 					</tr>
 					<tr>
-						<td><label class="btn btn-default btn-block"> <spring:message
-									text="Image" />
-						</label></td>
-						<td><input type="file"
-							class=" btn btn-default btn-block form-control" id="file"
-							name="file" /></td>
+						<td><form:label class="btn btn-default btn-block"
+								path="image">
+								<spring:message text="Image" />
+							</form:label></td>
+						<td><form:input type="file"
+								class=" btn btn-default btn-block form-control" path="image"
+								required="true" /></td>
 					</tr>
 					<tr>
 				</table>
@@ -193,7 +194,7 @@
 				</table>
 			</div>
 
-		</c:when>
+	</c:when>
 		<c:otherwise>
 			<div style="margin-bottom: 70px"></div>
 		</c:otherwise>
