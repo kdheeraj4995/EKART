@@ -47,22 +47,28 @@ public class DynamicNavbar {
 		return mv;
 	}
 	@RequestMapping("view/{category}")
-	public String view(@PathVariable("category") int categoryid,RedirectAttributes attributes)
+	public String view(@PathVariable("category") int categoryid,RedirectAttributes attributes,Model model)
 	{
-		attributes.addFlashAttribute("productList",productDAO.getcatitem(categoryid));
+		model.addAttribute("productList",productDAO.getcatitem(categoryid));
+		model.addAttribute("ViewCategoryClicked", "true");
+		model.addAttribute("HideOthers","true");
+		/*attributes.addFlashAttribute("productList",productDAO.getcatitem(categoryid));
 		attributes.addFlashAttribute("ViewCategoryClicked", "true");
-		attributes.addFlashAttribute("HideOthers","true");
+		attributes.addFlashAttribute("HideOthers","true");*/
 		/*mv.addAttribute("productList",productDAO.getcatitem(categoryid));
 		mv.addAttribute("ViewCategoryClicked", "true");*/
-		return "redirect:/Welcome";
+		return "Welcome";
 	}
 
 	@RequestMapping("IndividualItem/{id}")
-	public String IndividualItem(@PathVariable("id") int id,RedirectAttributes attributes)
+	public String IndividualItem(@PathVariable("id") int id,RedirectAttributes attributes,Model model)
 	{
-		attributes.addFlashAttribute("IndividualItemClicked", "true");
+		model.addAttribute("IndividualItemClicked", "true");
+		model.addAttribute("IndividualProduct", productDAO.getindividual(id));
+		model.addAttribute("HideOthers", "true");
+		/*attributes.addFlashAttribute("IndividualItemClicked", "true");
 		attributes.addFlashAttribute("IndividualProduct", productDAO.getindividual(id));
-		attributes.addFlashAttribute("HideOthers", "true");
-		return "redirect:/Welcome";
+		attributes.addFlashAttribute("HideOthers", "true");*/
+		return "Welcome";
 	}
 }

@@ -9,7 +9,7 @@
 <style>
 ul {
 	list-style: none;
-	padding: 0; 
+	padding: 0;
 	margin: 0;
 }
 
@@ -31,15 +31,17 @@ li {
 <title>E K A R T</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="<c:url value="/resources/css/demo.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/footer-distributed-with-address-and-phones.css" />"
+<link
+	href="<c:url value="/resources/css/footer-distributed-with-address-and-phones.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/font-awesome.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/bootstrap-theme.min.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/w3.css" />" rel="stylesheet">
-<link href="<c:url value="  " />"
-	rel="stylesheet">
+<link href="<c:url value="  " />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/HomePage.css" />"
 	rel="stylesheet">
@@ -56,18 +58,18 @@ li {
 		<nav>
 			<ul class="w3-navbar w3-black w3-card-2 w3-medium  "
 				style="opacity: 0.9">
-				<li><a href="Welcomepage"
+				<li><a href="${pageContext.request.contextPath}/Welcomepage"
 					class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 						class="fa fa-home"></i> E K A R T </a></li>
 				<c:choose>
 					<c:when test="${LoggedIn}">
 
-						<li style="float: right"><a href="perform_logout"
+						<li style="float: right"><a href="${pageContext.request.contextPath}/perform_logout"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-sign-out"></i>Logout</a></li>
+								class="fa fa-sign-out"></i></a></li>
 						<c:choose>
 							<c:when test="${!Administrator}">
-								<li style="float: right"><a href="viewcart"
+								<li style="float: right"><a href="${pageContext.request.contextPath}/viewcart"
 									class="w3-hover-none w3-text-sand w3-hover-text-white"><i
 										class="fa fa-shopping-cart"></i> <span
 										class="w3-badge w3-white">${cartsize}</span></a></li>
@@ -80,12 +82,12 @@ li {
 					</c:when>
 
 					<c:otherwise>
-						<li style="float: right"><a href="Register"
+						<li style="float: right"><a href="${pageContext.request.contextPath}/Register"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-user-plus"></i>Register</a></li>
-						<li style="float: right"><a href="login"
+								class="fa fa-user-plus"></i></a></li>
+						<li style="float: right"><a href="${pageContext.request.contextPath}/login"
 							class="w3-hover-none w3-text-sand w3-hover-text-white"><i
-								class="fa fa-sign-in"></i>Login</a></li>
+								class="fa fa-sign-in"></i></a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -99,9 +101,10 @@ li {
 								class="w3-navbar w3-light-grey w3-round w3-small menu w3-card-4 "
 								Style="width: 70%; margin-left: 15%; margin-top: -2px;">
 								<c:forEach items="${categoryList}" var="category">
-									<li><a href="view/${category.id}" class="w3-hover-none"><i
-											class="fa fa-list-alt" aria-hidden="true"></i>
-											${category.name}</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/view/${category.id}"
+										class="w3-hover-none"><i class="fa fa-list-alt"
+											aria-hidden="true"></i> ${category.name}</a></li>
 								</c:forEach>
 
 							</ul>
@@ -131,22 +134,6 @@ li {
 		</nav>
 	</div>
 
-
-
-	<c:choose>
-		<c:when test="${IfViewCartClicked}">
-			<c:import url="/WEB-INF/jsp/cart.jsp">
-			</c:import>
-		</c:when>
-		<c:when test="${IndividualItemClicked}">
-			<c:import url="/WEB-INF/jsp/IndividualItem.jsp">
-			</c:import>
-		</c:when>
-		<c:when test="${IfPaymentClicked}">
-			<c:import url="/WEB-INF/jsp/Payment.jsp">
-			</c:import>
-		</c:when>
-	</c:choose>
 	<!-- Category List End -->
 	<c:choose>
 		<c:when test="${IfLoginClicked}">
@@ -159,6 +146,18 @@ li {
 		</c:when>
 		<c:when test="${ViewCategoryClicked}">
 			<c:import url="/WEB-INF/jsp/viewitem.jsp">
+			</c:import>
+		</c:when>
+		<c:when test="${IfViewCartClicked}">
+			<c:import url="/WEB-INF/jsp/cart.jsp">
+			</c:import>
+		</c:when>
+		<c:when test="${IndividualItemClicked}">
+			<c:import url="/WEB-INF/jsp/IndividualItem.jsp">
+			</c:import>
+		</c:when>
+		<c:when test="${IfPaymentClicked}">
+			<c:import url="/WEB-INF/jsp/Payment.jsp">
 			</c:import>
 		</c:when>
 	</c:choose>
@@ -281,18 +280,16 @@ li {
 							style="background-color: #111111; height: 141px; padding-top: 20px">
 							<img alt="Empty Cart"
 								src="<c:url value="/resources/images/Black-Friday-Banner.jpg"></c:url>">
-
-
 						</div>
 						<!-- <ul> -->
-						<div class="row  "
+						<div class="row"
 							style="padding-top: 20px; padding-botton: 20px; padding-left: 20px; padding-bottom: 20px;">
 							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
 							<c:forEach items="${productList6}" var="product">
 								<div class="col-xs-2 w3-animate-zoom">
 									<div class="img">
 										<img height="192px" width="192px" alt="${product.id}"
-										    src="/EKART/imageDisplay/${product.id}">
+											src="/EKART/imageDisplay/${product.id}">
 										<div class="desc w3-black" style="opacity: 0.9">
 											<p>
 												${product.name}<br> <i class="fa fa-inr"
@@ -312,23 +309,6 @@ li {
 										</div>
 									</div>
 								</div>
-
-								<%-- <li><a href=" ${product.id}" class="w3-hover-none">${product.name}</a></li>
-								<li><img alt="Image"
-									src="<c:url value="/WEB-INF/resources/images/product/${product.id}.jpg"></c:url>"></li>
-								
-								<c:choose>
-									<c:when test="${LoggedIn}">
-											<li><a href="addtoCart/${userId}/${product.id}"
-						class="w3-hover-none">Add to Cart</a></li>
-										<li>
-											<form action="addtoCart/${userId}/${product.id}">
-												<input type="number" value="1" name="quantity"> <input
-													type="submit" value="Add to Cart">
-											</form>
-										</li>
-									</c:when>
-								</c:choose> --%>
 							</c:forEach>
 						</div>
 						<!-- </ul> -->

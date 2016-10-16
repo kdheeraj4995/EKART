@@ -44,7 +44,7 @@
 		<c:forEach items="${productList}" var="product">
 			<div class="col-xs-3 w3-animate-zoom">
 				<div class="img">
-					<a href="IndividualItem/${product.id}"> <img height="192px"
+					<a href="${pageContext.request.contextPath}/IndividualItem/${product.id}"> <img height="192px"
 						width="192px" alt="${product.id}"
 						src="/EKART/imageDisplay/${product.id}">
 					</a>

@@ -76,8 +76,10 @@
 										<div class="col-xs-5">
 										<div class="col-xs-6">
 										<a href="IndividualItem/${cart.productid}">
-											<img height="72px" width="72px"  alt="${cart.productid}"
-											src="<c:url value="/resources/images/product/${cart.productid}.jpg"></c:url>">
+										<%-- 	<img height="72px" width="72px"  alt="${cart.productid}"
+											src="<c:url value="/resources/images/product/${cart.productid}.jpg"></c:url>"> --%>
+											<img height="72px" width="72px" alt="${product.id}"
+											src="/EKART/imageDisplay/${cart.productid}">
 											</a>
 										</div>
 										<div class="col-xs-6" style="padding-top: 22px" >
