@@ -18,8 +18,9 @@
 		<c:forEach items="${IndividualProduct}" var="product">
 			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
-					<img alt="${product.id}"
-						src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
+					<img height="192px"
+						width="192px" alt="${product.id}"
+						src="/EKART/imageDisplay/${product.id}">
 					<div class="desc">
 						<strong>${product.name}</strong>
 					</div>

@@ -46,7 +46,7 @@
 				<div class="img">
 					<a href="IndividualItem/${product.id}"> <img height="192px"
 						width="192px" alt="${product.id}"
-						src="data:image/png;base64,new String(${product.image})">
+						src="/EKART/imageDisplay/${product.id}">
 					</a>
 
 					<%-- <img height="192px" width="192px"  alt="${product.id}"

@@ -292,7 +292,7 @@ li {
 								<div class="col-xs-2 w3-animate-zoom">
 									<div class="img">
 										<img height="192px" width="192px" alt="${product.id}"
-											src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
+										    src="/EKART/imageDisplay/${product.id}">
 										<div class="desc w3-black" style="opacity: 0.9">
 											<p>
 												${product.name}<br> <i class="fa fa-inr"
