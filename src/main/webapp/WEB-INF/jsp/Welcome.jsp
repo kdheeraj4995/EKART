@@ -21,7 +21,6 @@ ul {
 li {
 	hover: none;
 }
-
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
 	width: 50%;
 	margin: 0 auto;

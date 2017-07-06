@@ -50,10 +50,11 @@
 
 						<c:choose>
 								<c:when test="${LoggedIn}">
-									<form action="addtoCart/${userId}/${product.id}">
+									<form action="${pageContext.request.contextPath}/addtoCart/${userId}/${product.id}">
 										<input type="number" value="1" name="quantity"
 											class=" form-control  btn-block  "> 
-											<br><input
+											<br>
+										<input
 											type="submit" value="Add to Cart"
 											class="btn btn-xs btn-success btn-block">
 									</form>

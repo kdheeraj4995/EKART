@@ -58,7 +58,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 		if (listSupplier != null && !listSupplier.isEmpty()) {
 			return listSupplier.get(0);
 		}
-		
 		return null;
 	}
 

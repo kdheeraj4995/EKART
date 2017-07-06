@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
+/*
 import com.niit.dao.CartDAO;
 import com.niit.dao.CartDAOImpl;
 import com.niit.dao.CategoryDAO;
@@ -23,7 +23,7 @@ import com.niit.dao.ProductDAOImpl;
 import com.niit.dao.SupplierDAO;
 import com.niit.dao.SupplierDAOImpl;
 import com.niit.dao.UserDetailsDAO;
-import com.niit.dao.UserDetailsDAOImpl;
+import com.niit.dao.UserDetailsDAOImpl;*/
 import com.niit.models.Cart;
 import com.niit.models.Category;
 import com.niit.models.Product;
@@ -84,7 +84,7 @@ public class ApplicationContextConfig {
 		return transactionManager;
 	}
 
-	@Autowired
+/*	@Autowired
 	@Bean(name = "categoryDAO")
 	public CategoryDAO getCategorDao(SessionFactory sessionFactory) {
 		return new CategoryDAOImpl(sessionFactory);
@@ -109,5 +109,5 @@ public class ApplicationContextConfig {
 	@Bean(name = "cartDAO")
 	public CartDAO getCartDAO(SessionFactory sessionFactory) {
 			return new CartDAOImpl(sessionFactory);
-	}
+	}*/
 }

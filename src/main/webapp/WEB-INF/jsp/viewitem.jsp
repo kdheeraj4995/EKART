@@ -58,7 +58,7 @@
 							${product.price}
 							<c:choose>
 								<c:when test="${LoggedIn}">
-									<form action="addtoCart/${userId}/${product.id}">
+									<form action="${pageContext.request.contextPath}/addtoCart/${userId}/${product.id}">
 										<input type="number" value="1" name="quantity"
 											class=" form-control  btn-block  "> <input
 											type="submit" value="Add to Cart"

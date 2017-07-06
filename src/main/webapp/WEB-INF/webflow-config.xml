@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:flow="http://www.springframework.org/schema/webflow-config" 
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow-config
+                        http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd
+                        http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="checkoutFlowRegistry" />
+	</bean>
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="checkoutFlowExecutor" />
+	</bean>
+	<flow:flow-executor id="checkoutFlowExecutor"
+		flow-registry="checkoutFlowRegistry" />
+	<flow:flow-registry id="checkoutFlowRegistry">
+		<flow:flow-location id="checkoutFlow"
+			path="/WEB-INF/checkout-flow.xml" />
+	</flow:flow-registry>
+</beans>

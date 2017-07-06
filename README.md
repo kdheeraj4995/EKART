@@ -1,7 +1,7 @@
 # EKART - NIIT Project ①
 **[Project Demo Video](https://tiny.cc/EKART)**
 
-This Ecommerce project is built using Spring, Hibernate ORM and Spring security consisting of basic funtionality like
+This Ecommerce project is built using Spring, Hibernate ORM and Spring security, consisting of basic funtionality like
 - New user registrations
 - Different views for user and admin
 - View individual category items
